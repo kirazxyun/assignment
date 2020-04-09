@@ -1,24 +1,46 @@
 {
-  "name": "my-assignment",
-  "version": "0.1.0",
-  "private": true,
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "A Vue.js component",
+  "author": "zhangxiaoyun",
+  "private": false,
+  "main": "dist/assignment.umd.min.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "assignment"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:style": "gulp --gulpfile build-style.js",
+    "build:js": "vue-cli-service build --target lib --name assignment src/index.js",
+    "build": "npm run build:js && npm run build:style",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.6.4",
-    "vue": "^2.6.11"
+    "core-js": "^3",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.3.0",
-    "@vue/cli-plugin-eslint": "^4.3.0",
-    "@vue/cli-service": "^4.3.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-less": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "less-plugin-npm-import": "^2.1.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.5"
   },
   "eslintConfig": {
     "root": true,
@@ -29,14 +51,18 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not dead"
+    "last 2 versions"
   ]
 }
