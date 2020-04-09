@@ -1,44 +1,31 @@
 <template>
-  <div id="app" class="app">
+  <div id="app">
     <Assignment
       owner-id="laowang"
       :messages="messages"
-      :max="2"></Assignment>
+      :max="100"
+      :loading="loading"
+      @scroll-top="handleScrollTop"></Assignment>
   </div>
 </template>
 
 <script>
-import logo from './logo.png'
+import getMockData from './mock'
 export default {
   name: 'App',
   data () {
     return {
-      messages: [
-        {
-          id: '1xx',
-          type: 'userText',
-          content: '你好',
-          userId: 'laowang',
-          userName: '老王'
-        },
-        {
-          id: '2xx',
-          type: 'userImage',
-          content: logo,
-          userId: 'xiaoming',
-          userName: '小明'
-        },
-        {
-          id: '3xx',
-          type: 'system',
-          content: 'laowang撤回了一条消息'
-        },
-        {
-          id: '4xx',
-          type: 'system',
-          content: 'laowang 邀请 xiaoming 进入讨论组'
-        }
-      ]
+      messages: getMockData(25),
+      loading: false
+    }
+  },
+  methods: {
+    handleScrollTop () {
+      this.loading = true
+      setTimeout(() => {
+        this.messages.unshift(...getMockData(25))
+        this.loading
+      }, 3000)
     }
   }
 }
@@ -50,7 +37,4 @@ export default {
 }
 </style>
 <style lang="less" scoped>
-.app {
-  height: 100vh;
-}
 </style>
