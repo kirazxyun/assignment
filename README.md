@@ -71,6 +71,12 @@ max|Number|否|100|同时展示的信息阈值
 ownerId|String|是|-|面板所属的用户id
 loading|Boolean|否|false|显示数据加载中
 
+#### methods
+
+方法|参数|描述
+-|-|-
+scrollBottom|-| 滚动到底部
+
 #### event
 
 事件名|参数|描述
