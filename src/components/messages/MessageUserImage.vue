@@ -73,7 +73,8 @@ export default {
 
 <style lang="less" scoped>
 .placeholder-image {
-  max-width: 200px;
+  height: 200px;
+  max-height: 200px;
 }
 .full-screen {
   position: fixed;

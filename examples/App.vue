@@ -15,7 +15,7 @@ export default {
   name: 'App',
   data () {
     return {
-      messages: getMockData(25),
+      messages: getMockData(10),
       loading: false
     }
   },

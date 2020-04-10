@@ -3,7 +3,8 @@
     @scroll.passive="handleScroll">
     <div
       v-show="messageList.length === this.max"
-      class="assignment-top">最多展示{{ this.max }}条数据</div>
+      class="assignment-top"
+      @click="handleMaxClick">最多展示{{ this.max }}条数据</div>
     <div
       v-show="messageList.length !== this.max && loading"
       class="assignment-loading">数据加载中...</div>
@@ -64,11 +65,16 @@ export default {
         // 维持滚动条与底部的距离
         this.$el.scrollTop += (this.$el.scrollHeight - scrollHeight) + (scrollTop - this.$el.scrollTop)
       })
+      if (this.messageList.length === this.max) {
+        this.$emit('reach-max')
+      }
     }
   },
   mounted () {
     // 默认滚动到底部
-    this.scorllBottom()
+    setTimeout(() => {
+      this.scorllBottom()
+    }, 300)
   },
   methods: {
     // 对scroll事件做节流
@@ -78,10 +84,13 @@ export default {
         this.$emit('scroll-top')
       }
     }, 300),
+    handleMaxClick () {
+      this.$emit('max-click')
+    },
     // public methods
     // 滚动到底部
     scorllBottom () {
-      this.$el.scrollTop = this.$el.scrollHeight
+      this.$el.lastElementChild.scrollIntoView()
     }
   }
 }

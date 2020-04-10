@@ -4,7 +4,7 @@
       v-if="curMessageComponent"
       :is="curMessageComponent"
       :data="data"></component>
-    <MessageNotSupport v-else/>
+    <MessageNotSupport :data="data" v-else/>
   </div>
 </template>
 

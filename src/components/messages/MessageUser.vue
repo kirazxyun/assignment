@@ -4,6 +4,9 @@
       <img :src="logo"/>
     </div>
     <div class="user-message__content">
+      <div class="user-message__content-name">
+        {{ data && data.userName }}
+      </div>
       <div class="user-message__content-inner">
         <slot/>
       </div>
